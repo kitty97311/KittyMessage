@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/messageStateView"
+        app:layout_constraintTop_toTopOf="@id/messageContentView"
+        app:layout_constraintBottom_toBottomOf="@id/messageContentView"
+        app:layout_constraintStart_toEndOf="@id/messageContentView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/gap_normal"
+        android:text="@string/received"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/colorTwo"
+        android:gravity="end"/>
+
+    <TextView
+        app:layout_constraintTop_toBottomOf="@id/messageTimeView"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/messageContentView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxWidth="@dimen/message_max_width"
+        android:text="@string/temp_sms_text"
+        android:textSize="@dimen/text_size_normal"
+        android:textColor="@color/colorTwo"
+        android:padding="@dimen/gap_big"
+        android:background="@drawable/bg_received_message"/>
+
+    <TextView
+        android:padding="@dimen/gap_normal"
+        android:layout_marginStart="@dimen/gap_normal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:id="@+id/messageTimeView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/text_size_small"
+        android:textColor="@color/colorTwo"
+        android:text="@string/temp_sms_time"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

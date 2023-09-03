@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KittyAppTheme" parent="Theme.KittyMessage">
+        <item name="windowActionBar">false</item>
+        <item name="android:textViewStyle">@style/KittyTextViewStyle</item>
+        <item name="materialButtonStyle">@style/KittyButtonStyle</item>
+        <item name="radioButtonStyle">@style/KittyRadioButtonStyle</item>
+    </style>
+    <style name="KittyTextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorOne</item>
+    </style>
+    <style name="KittyButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorOne</item>
+    </style>
+    <style name="KittyRadioButtonStyle" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/colorOne</item>
+    </style>
+</resources>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/titleBar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/app_bar_height"
+    android:layout_marginStart="@dimen/gap_large"
+    android:layout_marginEnd="@dimen/gap_large">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_marginEnd="@dimen/gap_normal"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/btn_back"
+        app:backgroundTint="@color/colorOne"
+        android:padding="@dimen/gap_small"
+        android:layout_width="@dimen/button_size_normal"
+        android:layout_height="@dimen/button_size_normal"/>
+
+    <LinearLayout
+        android:layout_toEndOf="@id/backButton"
+        android:layout_centerVertical="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/messaging"
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold"/>
+        <TextView
+            android:id="@+id/subTitleText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/temp_phone_number"
+            android:textSize="@dimen/text_size_small"
+            android:textColor="@color/colorTwo"/>
+    </LinearLayout>
+
+</RelativeLayout>

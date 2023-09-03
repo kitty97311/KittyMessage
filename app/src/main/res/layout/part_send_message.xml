@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_margin="@dimen/gap_large"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <ImageButton
+        android:id="@+id/clipButton"
+        android:layout_width="@dimen/button_size_normal"
+        android:layout_height="@dimen/button_size_normal"
+        android:background="@drawable/bg_circle_button"
+        android:src="@drawable/ic_add"/>
+    <EditText
+        android:paddingStart="@dimen/gap_normal"
+        android:paddingEnd="@dimen/gap_normal"
+        android:id="@+id/messageBox"
+        android:layout_marginStart="@dimen/gap_small"
+        android:layout_marginEnd="@dimen/gap_small"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg_input_box_round"/>
+    <ImageButton
+        android:id="@+id/sendButton"
+        android:layout_width="@dimen/button_size_normal"
+        android:layout_height="@dimen/button_size_normal"
+        android:background="@drawable/bg_circle_button"
+        android:src="@drawable/ic_send"/>
+
+</LinearLayout>

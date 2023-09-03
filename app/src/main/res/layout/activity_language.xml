@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LanguageActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/app_bar_height"
+        android:layout_marginStart="@dimen/gap_large"
+        android:layout_marginEnd="@dimen/gap_large">
+
+        <RelativeLayout
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/gap_small"
+                android:paddingBottom="@dimen/gap_small"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_size_large"
+                android:text="@string/choose_your"/>
+            <TextView
+                android:layout_toEndOf="@id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/gap_small"
+                android:paddingBottom="@dimen/gap_small"
+                android:textSize="@dimen/text_size_large"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/_language"/>
+            <TextView
+                android:layout_below="@id/title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_size_tiny"
+                android:textStyle="normal"
+                android:textColor="@color/colorTwo"
+                android:text="@string/your_feeds_will_be_served_basis_on_your_selection"/>
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/okButton"
+            android:layout_marginEnd="@dimen/gap_normal"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_width="@dimen/button_width_small"
+            android:layout_height="@dimen/button_height_small"
+            android:background="@drawable/bg_round_button"
+            app:backgroundTint="#CEEBFF"
+            android:text="@string/ok"
+            android:textSize="@dimen/text_size_normal"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <ListView
+        android:layout_marginStart="@dimen/gap_large"
+        android:layout_marginEnd="@dimen/gap_large"
+        android:id="@+id/languageListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none"
+        android:divider="@null"
+        android:choiceMode="singleChoice"
+        tools:listitem="@layout/item_language"/>
+
+</LinearLayout>

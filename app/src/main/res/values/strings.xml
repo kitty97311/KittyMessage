@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">KittyMessage</string>
+    <string name="developer_name">Minami Kagaya</string>
+    <string name="ok">OK</string>
+    <string name="welcome_to_messages">Welcome to Messages</string>
+    <string name="this_action_can_contain_ads">This action can contain ads</string>
+    <string name="a_new_way_to_say_connected_to_friends">A new way to say connected to friends</string>
+    <string name="choose_your">Choose Your</string>
+    <string name="_language">\u0020Language</string>
+    <string name="your_feeds_will_be_served_basis_on_your_selection">Your Feeds will be served basis on your selection</string>
+    <string name="english">English</string>
+    <string name="chinese">Chinese</string>
+    <string name="hindi">Hindi</string>
+    <string name="spainish">Spain</string>
+    <string name="arabic">Arabic</string>
+    <string name="japanese">Japanese</string>
+    <string name="portuguese">Portuguese</string>
+    <string name="german">German</string>
+    <string name="russian">Russian</string>
+    <string name="messaging">Messaging</string>
+    <string name="all">All</string>
+    <string name="personal">Personal</string>
+    <string name="otps">OTPs</string>
+    <string name="offers">Offers</string>
+    <string name="transaction">Transaction</string>
+    <string name="start_chat">Start Chat</string>
+    <string name="temp_sms_text">Hello, there. This is Kitty, your friend. Can we meet in somewhere? I am really missing you. Where have you been. I am waiting for your response.</string>
+    <string name="temp_sms_time">Mar 11</string>
+    <string name="temp_phone_number">+1 123 456 7890</string>
+    <string name="new_conversation">New Conversation</string>
+    <string name="receiver_">Receiver:</string>
+    <string name="received">Received</string>
+</resources>

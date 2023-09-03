@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SplashActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="@dimen/splash_logo_size"
+            android:layout_height="@dimen/splash_logo_size"
+            android:src="@drawable/app_icon"/>
+        <TextView
+            android:layout_marginTop="@dimen/gap_normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_size_large"
+            android:text="@string/welcome_to_messages"/>
+        <TextView
+            android:layout_marginTop="@dimen/gap_small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="normal"
+            android:textColor="@color/colorTwo"
+            android:text="@string/a_new_way_to_say_connected_to_friends"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="5">
+
+            <ProgressBar
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:id="@+id/progressBar"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/progress_height"
+                android:layout_weight="3"
+                android:progressTint="@color/colorPrimary"
+                android:progressBackgroundTint="@color/colorPrimary"
+                android:indeterminate="false"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="@dimen/gap_small"
+            android:layout_marginBottom="@dimen/gap_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textStyle="normal"
+            android:text="@string/this_action_can_contain_ads"
+            android:textSize="@dimen/text_size_small" />
+
+    </LinearLayout>
+</RelativeLayout>

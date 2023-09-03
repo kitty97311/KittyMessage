@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/gap_normal"
+    android:paddingBottom="@dimen/gap_normal"
+    android:paddingStart="@dimen/gap_tiny"
+    android:paddingEnd="@dimen/gap_tiny"
+    android:weightSum="5"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/flagImageView"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/language_list_item_height"
+        android:layout_weight="1"
+        android:src="@drawable/img_flag_in"
+        app:riv_corner_radius="@dimen/gap_small"/>
+    <TextView
+        android:id="@+id/languageTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:textStyle="normal"
+        android:textFontWeight="600"
+        android:layout_marginStart="@dimen/gap_big"
+        android:textSize="@dimen/text_size_large"
+        android:text="@string/hindi"/>
+
+    <ImageView
+        android:id="@+id/checkRadioButton"
+        android:layout_width="@dimen/radio_button_size"
+        android:layout_height="@dimen/radio_button_size"
+        android:padding="@dimen/gap_small"
+        android:src="@drawable/img_unchecked"/>
+
+</LinearLayout>
