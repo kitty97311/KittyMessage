@@ -18,6 +18,7 @@
         android:gravity="end"/>
 
     <TextView
+        android:background="@drawable/bg_sent_message"
         app:layout_constraintTop_toBottomOf="@id/messageTimeView"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/messageContentView"
@@ -27,18 +28,19 @@
         android:text="@string/temp_sms_text"
         android:textSize="@dimen/text_size_normal"
         android:textColor="@color/white"
-        android:padding="@dimen/gap_big"
-        android:background="@drawable/bg_sent_message"/>
+        android:padding="@dimen/gap_normal"/>
 
     <TextView
-        android:padding="@dimen/gap_normal"
-        android:layout_marginEnd="@dimen/gap_normal"
+        android:paddingStart="@dimen/gap_normal"
+        android:paddingEnd="@dimen/gap_normal"
+        android:paddingTop="@dimen/gap_normal"
+        android:paddingBottom="@dimen/gap_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/messageTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/text_size_tiny"
         android:textColor="@color/colorTwo"
         android:text="@string/temp_sms_time"/>
 

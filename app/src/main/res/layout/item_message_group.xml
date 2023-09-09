@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:attr/selectableItemBackground"
     android:paddingTop="@dimen/gap_small"
     android:paddingBottom="@dimen/gap_small">
 
@@ -11,8 +12,8 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="@dimen/gap_large"
         android:id="@+id/avatarView"
-        android:layout_width="@dimen/message_photo_size"
-        android:layout_height="@dimen/message_photo_size">
+        android:layout_width="@dimen/photo_size_normal"
+        android:layout_height="@dimen/photo_size_normal">
         <de.hdodenhof.circleimageview.CircleImageView
             android:visibility="invisible"
             android:id="@+id/photoImageView"
@@ -59,17 +60,17 @@
                 android:maxLines="1"
                 android:text="@string/developer_name"
                 android:textSize="@dimen/text_size_big"
-                android:textColor="@color/colorTwo"/>
+                android:textColor="@color/colorOne"/>
             <TextView
                 android:layout_below="@id/nameTextView"
                 android:gravity="top"
-                android:maxLines="3"
+                android:maxLines="2"
                 android:ellipsize="end"
                 android:id="@+id/contentTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/temp_sms_text"
-                android:textSize="@dimen/text_size_small"
+                android:textSize="@dimen/text_size_normal"
                 android:textStyle="normal"
                 android:textColor="@color/colorTwo"/>
         </RelativeLayout>
@@ -86,8 +87,8 @@
     <View
         android:visibility="invisible"
         android:id="@+id/newBadge"
-        android:layout_marginStart="@dimen/gap_small"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/avatarView"
         app:layout_constraintTop_toTopOf="@id/avatarView"
         app:layout_constraintBottom_toBottomOf="@id/avatarView"
         android:layout_width="@dimen/new_badge_size"

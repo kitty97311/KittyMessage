@@ -1,152 +1,128 @@
 package com.galaxy.kittymessage;
 
-import android.content.ContentUris;
-import android.content.Intent;
+import android.content.ContentValues;
 import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.provider.Telephony;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
+import com.google.android.material.navigation.NavigationView;
 
-import de.hdodenhof.circleimageview.CircleImageView;
+public class MessagingActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class MessagingActivity extends BaseActivity {
-
-    private List<MessageModel> smsGroupList;
+    private FragmentManager fm;
+    private DrawerLayout mDrawerLayout;
+    private Fragment curFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
-        setTitleText(R.string.messaging);
+        fm = getSupportFragmentManager();
 
-        findViewById(R.id.startChatButton).setOnClickListener(this);
+        findViewById(R.id.navButton).setOnClickListener(this);
+        findViewById(R.id.settingButton).setOnClickListener(this);
+        findViewById(R.id.unreadNavButton).setOnClickListener(this);
+        findViewById(R.id.privateNavButton).setOnClickListener(this);
+        findViewById(R.id.archivedNavButton).setOnClickListener(this);
+        findViewById(R.id.scheduledNavButton).setOnClickListener(this);
+        findViewById(R.id.starredNavButton).setOnClickListener(this);
+        findViewById(R.id.blockNavButton).setOnClickListener(this);
+        findViewById(R.id.backupNavButton).setOnClickListener(this);
+        findViewById(R.id.themeNavButton).setOnClickListener(this);
+        findViewById(R.id.swipeNavButton).setOnClickListener(this);
+        findViewById(R.id.appearanceNavButton).setOnClickListener(this);
+        findViewById(R.id.privacyNavButton).setOnClickListener(this);
+        findViewById(R.id.inviteNavButton).setOnClickListener(this);
+        findViewById(R.id.rateNavButton).setOnClickListener(this);
 
-        RecyclerView smsGroupListView = findViewById(R.id.messageList);
+        mDrawerLayout = findViewById(R.id.drawerView);
 
-        Cursor cursor = getContentResolver().query(Telephony.Sms.CONTENT_URI,
-                null, null, null, null);
-        List<MessageModel> smsList = new ArrayList<>();
-        int size = cursor.getCount();
-        while (cursor.moveToNext()) {
-            String[] columnList = cursor.getColumnNames();
-            MessageModel mm = new MessageModel();
-            mm._id = cursor.getLong(cursor.getColumnIndexOrThrow("_id"));
-            String number = cursor.getString(cursor.getColumnIndexOrThrow("address"));;
-            String contactName = null;
-            Uri uri = Uri.withAppendedPath(ContactsContract.PhoneLookup.CONTENT_FILTER_URI, Uri.encode(number));
-            Cursor contactCursor = getContentResolver().query(uri, null,
-                    ContactsContract.PhoneLookup.NUMBER + "='" + number + "'",null,null);
-            if(contactCursor.getCount() > 0)
-            {
-                contactCursor.moveToFirst();
-                contactName = contactCursor.getString(contactCursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup.DISPLAY_NAME));
-                long contactId = contactCursor.getLong(contactCursor.getColumnIndexOrThrow(ContactsContract.PhoneLookup._ID));
-                mm.contactId = contactId;
-                // Query the ContactsContract.Data content URI to retrieve the contact photo
-                Uri photoUri = ContentUris.withAppendedId(ContactsContract.Contacts.CONTENT_URI, contactId);
-                InputStream photoStream = ContactsContract.Contacts.openContactPhotoInputStream(getContentResolver(), photoUri);
+        openPage(new MessagingFragment());
+    }
 
-                // Use the contact photo as needed
-                if (photoStream != null) {
-                    // Display or process the contact photo
-                    mm.photo = BitmapFactory.decodeStream(photoStream);
-                }
-            }
-            mm.number = number;
-            mm.contactName = contactName;
-            mm.body = cursor.getString(cursor.getColumnIndexOrThrow("body"));
-            Calendar cal = Calendar.getInstance();
-            cal.setTimeInMillis(cursor.getLong(cursor.getColumnIndexOrThrow(Telephony.ThreadsColumns.DATE)));
-            mm.date = cal;
-            smsList.add(mm);
+    protected void setTitleText(String s) {
+        ((TextView) findViewById(R.id.titleText)).setText(s);
+    }
+
+    protected void setTitleText(int i) {
+        ((TextView) findViewById(R.id.titleText)).setText(getResources().getString(i));
+    }
+
+    protected void setNavbar(boolean showBack, boolean showSetting) {
+        findViewById(R.id.navButton).setBackgroundResource(showBack ? R.drawable.btn_back : R.drawable.btn_nav);
+        findViewById(R.id.navButton).setTag(showBack ? "back_button" : "nav_button");
+        findViewById(R.id.settingButton).setVisibility(showSetting ? View.VISIBLE : View.INVISIBLE);
+    }
+
+    public void openPage(Fragment f) {
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
+        ft.replace(R.id.fragmentContainer, f).commit();
+        curFragment = f;
+    }
+
+    public void closePage() {
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_CLOSE);
+        Fragment f = new BaseFragment();
+        if (curFragment instanceof MessagingFragment) {
+            finish();
         }
-        smsGroupList = smsList;
-
-        RecyclerView.LayoutManager rlm = new LinearLayoutManager(this);
-        smsGroupListView.setLayoutManager(rlm);
-        smsGroupListView.setAdapter(new SmsListAdapter());
+        if (curFragment instanceof UnreadMessagesFragment
+                || curFragment instanceof PrivateBoxFragment
+                || curFragment instanceof EnterPasswordFragment
+                || curFragment instanceof SettingsFragment
+        ) {
+            f = new MessagingFragment();
+        } else if (curFragment instanceof NotificationPreviewsFragment) {
+            f = new SettingsFragment();
+        }
+        ft.replace(R.id.fragmentContainer, f).commit();
+        curFragment = f;
     }
 
     @Override
-    public void onClick(View view) {
-        super.onClick(view);
-        if (view.getId() == R.id.startChatButton) {
-            startActivity(new Intent(this, NewMessageActivity.class));
-        }
+    public void onBackPressed() {
+        closePage();
     }
 
-    private class SmsListAdapter extends RecyclerView.Adapter<SmsListAdapter.SmsGroupViewHolder> {
-
-        @NonNull
-        @Override
-        public SmsGroupViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            return new SmsGroupViewHolder(LayoutInflater.from(MessagingActivity.this).inflate(R.layout.item_message_group, parent, false));
-        }
-
-        @Override
-        public void onBindViewHolder(@NonNull SmsGroupViewHolder holder, int position) {
-            MessageModel item = smsGroupList.get(position);
-            holder.contentView.setText(item.body);
-            if (item.contactName == null) {
-                holder.nameView.setText(item.number);
-                holder.defaultView.setVisibility(View.VISIBLE);
-            } else {
-                holder.nameView.setText(item.contactName);
-                if (item.photo == null) {
-                    holder.contactView.setVisibility(View.VISIBLE);
-                    holder.contactView.setText(String.valueOf(Character.toUpperCase(item.contactName.charAt(0))));
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.navButton) {
+            if (v.getTag().equals(AppConstant.NAV_BUTTON_TAG)) {
+                if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
                 } else {
-                    holder.photoView.setVisibility(View.VISIBLE);
-                    holder.photoView.setImageBitmap(item.photo);
+                    mDrawerLayout.openDrawer(GravityCompat.START);
                 }
+            } else {
+                onBackPressed();
             }
-            holder.contentView.setText(item.body);
+        } else if (v.getId() == R.id.settingButton) {
+            openPage(new SettingsFragment());
         }
-
-        @Override
-        public int getItemCount() {
-            return smsGroupList.size();
-        }
-
-        private class SmsGroupViewHolder extends RecyclerView.ViewHolder {
-
-            public CircleImageView photoView;
-            public ImageView defaultView;
-            public  TextView contactView;
-            public TextView nameView;
-            public TextView contentView;
-            public TextView dateView;
-
-            public SmsGroupViewHolder(@NonNull View itemView) {
-                super(itemView);
-                photoView = itemView.findViewById(R.id.photoImageView);
-                defaultView = itemView.findViewById(R.id.defaultAvatarView);
-                contactView = itemView.findViewById(R.id.contactAvatarView);
-                nameView = itemView.findViewById(R.id.nameTextView);
-                contentView = itemView.findViewById(R.id.contentTextView);
-                dateView = itemView.findViewById(R.id.timeView);
+        else {
+            if (v.getId() == R.id.unreadNavButton) {
+                openPage(new UnreadMessagesFragment());
+            } else if (v.getId() == R.id.privateNavButton) {
+                openPage(new EnterPasswordFragment());
             }
-
+            mDrawerLayout.closeDrawer(GravityCompat.START);
         }
     }
 }

@@ -15,8 +15,8 @@
         android:background="@drawable/btn_back"
         app:backgroundTint="@color/colorOne"
         android:padding="@dimen/gap_small"
-        android:layout_width="@dimen/button_size_normal"
-        android:layout_height="@dimen/button_size_normal"/>
+        android:layout_width="@dimen/nav_button_size"
+        android:layout_height="@dimen/nav_button_size"/>
 
     <TextView
         android:layout_toEndOf="@id/backButton"

@@ -2,6 +2,6 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:drawable="@drawable/img_contact_add"
-        android:width="@dimen/button_size_normal"
-        android:height="@dimen/button_size_normal"/>
+        android:width="@dimen/icon_size_big"
+        android:height="@dimen/icon_size_big"/>
 </layer-list>

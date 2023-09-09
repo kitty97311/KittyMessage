@@ -14,7 +14,7 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class LanguageActivity extends BaseActivity {
+public class LanguageActivity extends AppCompatActivity {
 
     private String selectedTag;
 

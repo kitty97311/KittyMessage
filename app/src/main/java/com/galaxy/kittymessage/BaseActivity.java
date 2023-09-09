@@ -14,6 +14,12 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        findViewById(R.id.backButton).setOnClickListener(this);
+    }
+
     protected void setTitleText(String s) {
         ((TextView) findViewById(R.id.titleText)).setText(s);
     }
@@ -28,6 +34,10 @@ public class BaseActivity extends AppCompatActivity implements View.OnClickListe
 
     protected void setSubTitleText(int i) {
         ((TextView) findViewById(R.id.subTitleText)).setText(getResources().getString(i));
+    }
+
+    protected void hideSubTitle() {
+        ((TextView) findViewById(R.id.subTitleText)).setVisibility(View.GONE);
     }
 
     @Override

@@ -2,7 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <include android:id="@+id/actionBar" layout="@layout/actionbar_detail"/>
 
@@ -10,6 +11,10 @@
         tools:listitem="@layout/item_received_message"
         android:layout_below="@id/actionBar"
         android:layout_above="@id/senderBar"
+        android:id="@+id/messageListView"
+        android:orientation="vertical"
+        app:reverseLayout="true"
+        app:stackFromEnd="true"
         android:layout_marginStart="@dimen/gap_large"
         android:layout_marginEnd="@dimen/gap_large"
         android:layout_width="match_parent"

@@ -4,6 +4,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <color name="colorProgressBG">#D9DFE5</color>
+
     <color name="colorPrimary">#0094FF</color>
     <color name="colorSecondary">#FF961F</color>
     <color name="colorOne">#202124</color>

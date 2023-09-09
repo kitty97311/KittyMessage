@@ -27,19 +27,21 @@
         android:maxWidth="@dimen/message_max_width"
         android:text="@string/temp_sms_text"
         android:textSize="@dimen/text_size_normal"
-        android:textColor="@color/colorTwo"
-        android:padding="@dimen/gap_big"
+        android:textColor="@color/colorOne"
+        android:padding="@dimen/gap_normal"
         android:background="@drawable/bg_received_message"/>
 
     <TextView
-        android:padding="@dimen/gap_normal"
-        android:layout_marginStart="@dimen/gap_normal"
+        android:paddingStart="@dimen/gap_normal"
+        android:paddingEnd="@dimen/gap_normal"
+        android:paddingTop="@dimen/gap_normal"
+        android:paddingBottom="@dimen/gap_small"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:id="@+id/messageTimeView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_small"
+        android:textSize="@dimen/text_size_tiny"
         android:textColor="@color/colorTwo"
         android:text="@string/temp_sms_time"/>
 

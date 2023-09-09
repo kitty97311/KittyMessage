@@ -31,12 +31,15 @@
         </activity>
         <activity android:name=".MessagingActivity"
             android:exported="true" />
-        <activity android:name=".NewMessageActivity" />
-        <activity android:name=".MessageDetailActivity" />
+        <activity android:name=".NewMessageActivity"
+            android:exported="true" />
+        <activity android:name=".MessageDetailActivity"
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-7088597784973519~3400853339" />
+        <receiver android:name="com.galaxy.kittymessage.SmsSentReceiver" />
     </application>
 
 </manifest>
